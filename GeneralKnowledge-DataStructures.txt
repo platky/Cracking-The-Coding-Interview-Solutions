@@ -1,0 +1,127 @@
+General Technical Knowledge (Pg 47)
+
+== DATA STRUCTURES ==
+
+Linked List
+----------------
+Space: O(n)
+Access: O(n)
+Search: O(n)
+Insert/Delete: O(1)
+
+Linked lists are simply used for chaining data together. It is comprised of nodes
+that hold specific data as well as a pointer to the next node in the list. This allows
+for any individual node to be stored anywhere in memory as its position is always
+tracked by its parent in the list. There are also double linked lists where each
+node has a pointer to its parent as well as its child so you can traverse the list
+both ways.
+
+I will describe in pseudocode of sorts
+
+//Start with a struct describing the node
+struct Node {
+	variable data; //whatever data you are attempting to store/utilize
+	Node * child; //pointer to child node if it exists
+}
+
+Node *myList; //pointer to beginning of list is always needed
+
+void insert(var data){
+	if(myList==NULL){
+		//first node
+		Node tmp = new Node;
+		tmp->data=data;
+		tmp->child=NULL;
+	} else {
+		//create new node and put its child to beginning of list
+		Node tmp = new Node;
+		tmp->data=data;
+		tmp->child=myList;
+		myList=tmp; //beginning of list is now this new node
+		//this can also work in O(1) if you track the end of the list as well as the beginning
+		//which may fit your needs better
+	}
+}
+
+Node search(var data){
+	//search for a node matching the data
+	Node *tmp = myList;//need pointer to list to traverse without wrecking head
+	while(tmp!=null){
+		if(tmp->data==data) {
+			return tmp;
+		} else {
+			tmp=tmp->child;
+		}
+	}
+	return NULL;
+}
+
+This provides a succinct enough idea of how linked lists work and can be traversed. 
+
+
+
+Binary Trees
+-----------------
+Space: O(n)
+Access: O(logn)
+Search: O(logn)
+Insert/Delete: O(logn)
+
+
+Tries AKA Prefix/Radix Tree
+-----------------
+Space: O(n) <= Not sure? maybe O(n*L)
+Access: O(L)
+Search: O(L)
+Insert/Delete: O(L)
+where L = length of the word
+
+A trie is a tree structure that has keys associate we nodes. The node is defined by its position
+in the tree opposed to any stored data.
+
+i.e.
+             Node
+		A			B
+	I	C	
+Very useful for building and utilizing words.
+One important note is Radix trees are a slightly optimized version in that single children
+are grouped with parents. So if a chain of children all had one child it could be grouped.
+i.e. A->B->D->Y would just be one node of ABDY
+
+Traversal and insertion are more or less the same as any other tree in that at each node you check
+your next path then continue. A balanced trie would be as efficient as a balanced search tree but in
+real world scenarios this seems less likely.
+
+
+Stacks
+-----------------
+Space: O(n)
+Access: O(n)
+Search: O(n)
+Insert/Delete: O(1)
+
+
+Queues
+-----------------
+Space: O(n)
+Access: O(n)
+Search: O(n)
+Insert/Delete: O(1)
+
+
+Vectors/ArrayLists
+-----------------
+Space: O(n)
+Access: O(1)
+Search: O(n)
+Insert/Delete: O(1)/O(n) //deleting requires shifting all other values to fill gap
+
+
+Hash Tables (very important)
+-----------------
+Space: O(n)
+Access: O(1) to O(n) depending on utilization
+Search: O(1)
+Insert/Delete: O(1)
+
+In real world these are often the most efficient data structure.
