@@ -1,0 +1,32 @@
+General Technical Knowledge (Pg 47)
+
+== ALGORITHMS ==
+
+Breadth First Search
+----------------
+Complexity: 
+
+
+Depth First Search
+----------------
+Complexity: 
+
+
+Binary Search
+----------------
+Complexity: 
+
+
+Merge Sort
+----------------
+Complexity: 
+
+
+Quick Sort
+----------------
+Complexity: 
+
+
+Tree Insert/Find
+----------------
+Complexity: 
