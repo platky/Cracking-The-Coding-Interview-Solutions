@@ -67,6 +67,22 @@ Access: O(logn)
 Search: O(logn)
 Insert/Delete: O(logn)
 
+A tree like structure with a root node and two or less child nodes for each node.
+They are often sorted to keep complexity down. i.e. all left child nodes are less
+than its parents node. Ideally the tree will be balanced which means no branch will be greater or less than one the size of its sibling branch. This means our tree height
+would be logn.
+
+Much like the linked list you can create a simple structure as so:
+
+struct Node{
+	var data;
+	Node *left;
+	Node *right;
+}
+
+The trickiest part of properly utilizing these trees is keeping them balanced. This
+can be done recursively and by tracking max lengths of branches. If a branch is unbalanced
+you rotate the whole branch left or right until balanced.
 
 Tries AKA Prefix/Radix Tree
 -----------------
@@ -100,6 +116,14 @@ Access: O(n)
 Search: O(n)
 Insert/Delete: O(1)
 
+Stack can be thought of very literally. You add something on top of a stack
+and to remove something you must also take off the top item. This is called
+pushing and popping and follows LIFO(last in first out). This can be done
+basically the same way a linked list is designed.
+
+Stacks are utilized in lots of traversal problems and tie in nicely with trees.
+I have heavily utilized them for memory management in CS350 Operating systems
+while building the kernel.
 
 Queues
 -----------------
@@ -107,6 +131,10 @@ Space: O(n)
 Access: O(n)
 Search: O(n)
 Insert/Delete: O(1)
+
+Shares similarities with the stack except uses a FIFO (First In First Out) style.
+You add items to the back of the queue and take off items at the front of the queue.
+This is several obvious real world applications as we use queues everyday.
 
 
 Vectors/ArrayLists
@@ -116,6 +144,9 @@ Access: O(1)
 Search: O(n)
 Insert/Delete: O(1)/O(n) //deleting requires shifting all other values to fill gap
 
+A type of dynamic array. Storage size is not declared and can be adjusted as needed.
+Unlike a linked list however, these follow the pattern of arrays and are typically
+stored contiguously and can be accessed by index.
 
 Hash Tables (very important)
 -----------------
@@ -124,4 +155,12 @@ Access: O(1) to O(n) depending on utilization
 Search: O(1)
 Insert/Delete: O(1)
 
-In real world these are often the most efficient data structure.
+In real world these are often the most efficient data structure. Hash Tables
+utilize a hash function which dictates location of items based on needs. The hash
+function will always return the same output for the same input. 
+
+Unfortunately collisions are common and we often have to deal with them.
+Common methods include probing (open addressing) which means when a collision occurs you find the next available spot. There is linear probing, quadratic probing and double hashing. 
+Cuckoo hashing is a common extension of this which uses two or more hash functions to find fits for data. If collisions occur with every hash function, stored data is rehashed. If this doesnt work as well then we must resize the table.
+
+We can also use chaining which utilizes an additional data structure (such as a linked list) to store more data at a single hash location.
